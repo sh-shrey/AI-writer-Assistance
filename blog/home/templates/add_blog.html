@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+
+<div class="container mt-5">
+
+    <a href="{% url 'see_blog' %}" class="btn btn-warning">View Your Work</a>
+<br>
+    <br>
+
+        <h4>Need help of AI - please select Genre </h4>
+    <a class="btn btn-primary mt-4" href="http://localhost:8501/">Poem</a>
+
+        <a class="btn btn-primary mt-4" href="http://localhost:8502/">Mystery </a>
+
+    <a class="btn btn-primary mt-4" href="http://localhost:8503/">Sci-fiction</a>
+
+    <a class="btn btn-primary mt-4" href="http://localhost:8504/">Horror</a>
+
+    <form method="post" class="mt-5 pt-5 mb-5 pb-5" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+                <label>Enter work title</label>
+                <input type="text" class="form-control" placeholder="Enter title" name="title">
+            </div>
+
+            <div class="col-md-12">
+                {{form.media}}
+                {{form.as_p}}
+            </div>
+
+            <div class="col-md-12">
+
+                <input type="file" name="image" class="form-control" >
+                </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Publish Work</button>
+
+
+    </form>
+
+</div>
+
+
+{% endblock %}
